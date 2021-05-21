@@ -74,7 +74,7 @@ public class Matrix {
      */
     public double getValue(int row, int column) throws MatrixException {
         if((row < 0 || row > this.rows()-1) || (column < 0 || column > this.columns()-1)){
-            throw new MatrixException("Incompatible matrix sizes");
+            throw new MatrixException(MatrixException.MATRIX_SIZE);
         }
 
         return matrix[row][column];
@@ -90,7 +90,7 @@ public class Matrix {
      */
     public void setValue(int row, int column, double newValue) throws MatrixException {
         if((row < 0 || row > this.rows()-1) || (column < 0 || column > this.columns()-1)){
-            throw new MatrixException("Incompatible matrix sizes");
+            throw new MatrixException(MatrixException.MATRIX_SIZE);
         }
 
         matrix[row][column] = newValue;
@@ -106,7 +106,7 @@ public class Matrix {
      */
     public Matrix addition(Matrix matrix) throws MatrixException {
         if(this.rows() != matrix.rows() || this.columns() != matrix.columns()){
-            throw new MatrixException("Incompatible matrix sizes");
+            throw new MatrixException(MatrixException.MATRIX_SIZE);
         }
         Matrix result = new Matrix(this.matrix);
 
@@ -129,7 +129,7 @@ public class Matrix {
      */
     public Matrix subtraction(final Matrix matrix) throws MatrixException {
         if(this.rows() != matrix.rows() || this.columns() != matrix.columns()){
-            throw new MatrixException("Incompatible matrix sizes");
+            throw new MatrixException(MatrixException.MATRIX_SIZE);
         }
 
         Matrix result = new Matrix(this.matrix);
@@ -153,7 +153,7 @@ public class Matrix {
      */
     public Matrix multiplication(final Matrix matrix) throws MatrixException {
         if(this.columns() != matrix.rows()){
-            throw new MatrixException("Incompatible matrix sizes");
+            throw new MatrixException(MatrixException.MATRIX_SIZE);
         }
 
         Matrix result = new Matrix(this.rows(), matrix.columns());
