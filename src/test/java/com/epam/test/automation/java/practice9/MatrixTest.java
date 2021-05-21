@@ -1,7 +1,6 @@
 package com.epam.test.automation.java.practice9;
 
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class MatrixTest{
