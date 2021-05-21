@@ -56,7 +56,7 @@ public class MatrixTest{
 
         int expected = 6;
 
-        Assert.assertEquals(matrix.columns(), 6);
+        Assert.assertEquals(matrix.columns(), expected);
     }
 
     @Test
