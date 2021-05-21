@@ -1,10 +1,9 @@
 package com.epam.test.automation.java.practice9;
 
 import java.text.DecimalFormat;
-import java.util.Arrays;
 
 public class Matrix {
-    private final double[][] matrix;
+    private final double[][] container;
     /**
      * Implement a constructor that creates an empty matrix with a given number of rows
      * columns (all values in matrix equal 0.0)
@@ -14,11 +13,11 @@ public class Matrix {
      * @return Returns a new instance of the matrix with the specified parameters
      */
     public Matrix(int row, int column) {
-        matrix = new double[row][column];
+        container = new double[row][column];
 
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
-                matrix[i][j] = 0;
+                container[i][j] = 0;
             }
         }
     }
@@ -38,21 +37,21 @@ public class Matrix {
         if(twoDimensionalArray[0].length < 1){
             throw new MatrixException("Array passed with zero number of columns");
         }
-        matrix = twoDimensionalArray;
+        container = twoDimensionalArray;
     }
 
     /**
      * @return Returns the number of rows in a matrix
      */
     public final int rows() {
-        return matrix.length;
+        return container.length;
     }
 
     /**
      * @return Returns the number of columns in a matrix
      */
     public final int columns() {
-        return matrix[0].length;
+        return container[0].length;
     }
 
     /**
@@ -61,7 +60,7 @@ public class Matrix {
      * @return Standard two-dimensional array
      */
     public double[][] twoDimensionalArrayOutOfMatrix() {
-        return matrix;
+        return container;
     }
 
     /**
@@ -77,7 +76,7 @@ public class Matrix {
             throw new MatrixException(MatrixException.MATRIX_SIZE);
         }
 
-        return matrix[row][column];
+        return container[row][column];
     }
 
     /**
@@ -93,7 +92,7 @@ public class Matrix {
             throw new MatrixException(MatrixException.MATRIX_SIZE);
         }
 
-        matrix[row][column] = newValue;
+        container[row][column] = newValue;
     }
 
     /**
@@ -108,11 +107,11 @@ public class Matrix {
         if(this.rows() != matrix.rows() || this.columns() != matrix.columns()){
             throw new MatrixException(MatrixException.MATRIX_SIZE);
         }
-        Matrix result = new Matrix(this.matrix);
+        Matrix result = new Matrix(this.container);
 
         for (int i = 0; i < this.rows(); i++) {
             for (int j = 0; j < this.columns(); j++) {
-                result.matrix[i][j] += matrix.getValue(i,j);
+                result.container[i][j] += matrix.getValue(i,j);
             }
         }
 
@@ -132,11 +131,11 @@ public class Matrix {
             throw new MatrixException(MatrixException.MATRIX_SIZE);
         }
 
-        Matrix result = new Matrix(this.matrix);
+        Matrix result = new Matrix(this.container);
 
         for (int i = 0; i < this.rows(); i++) {
             for (int j = 0; j < this.columns(); j++) {
-                result.matrix[i][j] -= matrix.getValue(i,j);
+                result.container[i][j] -= matrix.getValue(i,j);
             }
         }
 
@@ -161,7 +160,7 @@ public class Matrix {
         for (int i = 0; i < this.rows(); i++) {
             for (int j = 0; j < matrix.columns(); j++) {
                 for (int k = 0; k < this.columns(); k++) {
-                    result.matrix[i][j] += this.getValue(i,k) * matrix.getValue(k,j);
+                    result.container[i][j] += this.getValue(i,k) * matrix.getValue(k,j);
                 }
             }
         }
